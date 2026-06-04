@@ -233,26 +233,26 @@ export default function LandingClient({ isLoggedIn }) {
           </h1>
           <header className={`main-header ${styles.header}`}>
             <BrandLogo href="/" size="md" className={styles.logo} />
+            <nav className={styles.desktopNav} aria-label="Main">
+              <button
+                type="button"
+                className={`navLink ${styles.navLink}`}
+                onClick={() => scrollTo('features')}
+              >
+                Features
+              </button>
+              <button
+                type="button"
+                className={`navLink ${styles.navLink}`}
+                onClick={() => scrollTo('pricing')}
+              >
+                Pricing
+              </button>
+              <Link href="/testimonials" className={styles.navLink}>
+                Testimonials
+              </Link>
+            </nav>
             <div className={`landing-header-actions ${styles.headerActions}`}>
-              <nav className={styles.desktopNav} aria-label="Main">
-                <button
-                  type="button"
-                  className={`navLink ${styles.navLink}`}
-                  onClick={() => scrollTo('features')}
-                >
-                  Features
-                </button>
-                <button
-                  type="button"
-                  className={`navLink ${styles.navLink}`}
-                  onClick={() => scrollTo('pricing')}
-                >
-                  Pricing
-                </button>
-                <Link href="/testimonials" className={styles.navLink}>
-                  Testimonials
-                </Link>
-              </nav>
               <ThemeToggle compact />
               <button
                 type="button"

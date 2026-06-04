@@ -90,10 +90,9 @@
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  flex-wrap: wrap;
   gap: 16px;
   margin-bottom: clamp(40px, 8vw, 80px);
 }
@@ -109,14 +108,16 @@
 .headerActions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 12px;
-  flex-wrap: wrap;
 }
 
 .desktopNav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  gap: 24px;
+  min-height: 56px;
 }
 
 .navLink {
@@ -164,13 +165,36 @@
 }
 
 .mobileNavLink {
-  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 14px;
   border-radius: var(--linear-radius-md);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--landing-ink-muted);
+  border: 1px solid var(--landing-divider);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--landing-ink);
   text-decoration: none;
-  background: var(--landing-section-alt);
+  background: var(--linear-surface-3);
+  font-family: var(--font-body);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.mobileNavLink:hover {
+  background: var(--linear-surface-4);
+  border-color: var(--linear-hairline-strong);
+}
+
+.mobileNavLink:focus-visible {
+  outline: 2px solid rgba(94, 105, 209, 0.5);
+  outline-offset: 2px;
 }
 
 .ctaBtn {
@@ -709,23 +733,130 @@
     justify-content: center;
     gap: 16px;
   }
+}
+
+@media (max-width: 768px) {
+  .bgTextLayer {
+    gap: 24px;
+  }
+
+  .landingBgText {
+    font-size: clamp(52px, 22vw, 96px);
+    letter-spacing: 0;
+  }
+
+  .main {
+    margin: 12px;
+    min-height: calc(100dvh - 24px);
+    border-radius: 24px;
+    padding: 16px;
+  }
+
+  .header {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
 
   .desktopNav {
     display: none;
   }
 
+  .headerActions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 44px minmax(116px, 1fr);
+    align-items: center;
+    gap: 12px;
+  }
+
   .menuBtn {
     display: inline-flex;
+    width: 44px;
+    height: 44px;
+  }
+
+  .ctaBtn {
+    min-height: 44px;
+    padding: 12px 18px;
+    text-align: center;
+  }
+
+  .mobileNav {
+    grid-column: 1 / -1;
+    padding-top: 14px;
+    margin-bottom: 8px;
+  }
+
+  .hero {
+    gap: 24px;
+  }
+
+  .heroLeft {
+    gap: 24px;
+  }
+
+  .heroDesc p {
+    max-width: 32ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .navList {
+    gap: 12px 18px;
+  }
+
+  .navItem {
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .section,
+  .pricingSection {
+    margin-top: 72px;
+    padding: 28px 0;
+  }
+
+  .featureGrid,
+  .pricingGrid {
+    gap: 16px;
+    padding: 0;
+  }
+
+  .featureCard,
+  .priceCard {
+    padding: 24px;
+  }
+
+  .featureCard {
+    min-height: 240px;
+  }
+
+  .pricingTabs {
+    width: 100%;
+  }
+
+  .pricingTab {
+    flex: 1;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
-@media (max-width: 768px) {
-  .header {
-    margin-bottom: 32px;
+@media (max-width: 420px) {
+  .main {
+    margin: 8px;
+    padding: 14px;
   }
 
   .headerActions {
-    width: 100%;
-    justify-content: space-between;
+    gap: 10px;
+    grid-template-columns: auto 42px minmax(112px, 1fr);
+  }
+
+  .ctaBtn {
+    padding-left: 14px;
+    padding-right: 14px;
   }
 }
